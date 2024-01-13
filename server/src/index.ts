@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import * as RecipeAPI from "./recipe-api";
 import dotenv from "dotenv";
@@ -80,6 +80,10 @@ app.delete("/api/recipes/favourite", async (req, res) => {
     console.log(error);
     return res.status(500).json({ error: "Oops, something went wrong" });
   }
+});
+
+app.get("*", (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, "../../client/dist/index.html"));
 });
 
 const port = 5000;

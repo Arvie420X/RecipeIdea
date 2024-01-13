@@ -104,6 +104,9 @@ app.delete("/api/recipes/favourite", (req, res) => __awaiter(void 0, void 0, voi
         return res.status(500).json({ error: "Oops, something went wrong" });
     }
 }));
+app.get("*", (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, "../../client/dist/index.html"));
+});
 const port = 5000;
 app.listen(port, () => {
     console.log(`server is running on localhost:${5000}`);
